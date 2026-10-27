@@ -1,0 +1,402 @@
+<title>Yasmin Faraj</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single column, ~960px; hero frames the name like a computer-vision detection; projects lead, then experience, education, skills, contact */
+:root {
+  --bg: #F2F4F8;
+  --surface: #FFFFFF;
+  --ink: #141829;
+  --muted: #5B6178;
+  --line: #DADEE8;
+  --accent: #C2185B;       /* detection-box magenta */
+  --accent-soft: #FBE4EE;
+  --track: #2E5BFF;        /* tracking id blue */
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1220; --surface: #171B2C; --ink: #E9EBF4; --muted: #9CA2BC; --line: #2A3048;
+    --accent: #FF5C9A; --accent-soft: #3A1A2A; --track: #7C9BFF; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1220; --surface: #171B2C; --ink: #E9EBF4; --muted: #9CA2BC; --line: #2A3048;
+  --accent: #FF5C9A; --accent-soft: #3A1A2A; --track: #7C9BFF; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+.wrap { max-width: 960px; margin: 0 auto; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--track); outline-offset: 3px; border-radius: 4px; }
+
+/* nav */
+nav {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  padding-block: 24px; font-family: var(--font-mono); font-size: 13px;
+}
+nav .handle { color: var(--muted); }
+nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; flex-wrap: wrap; }
+nav a { text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--accent); }
+
+/* hero */
+.hero { padding-block: 56px 72px; display: grid; gap: 28px; }
+.detect {
+  position: relative; display: inline-block; justify-self: start;
+  border: 2px solid var(--accent); padding: 4px 14px 2px;
+  animation: lock 900ms cubic-bezier(.2,.8,.2,1) both;
+}
+.detect .tag {
+  position: absolute; left: -2px; bottom: 100%;
+  background: var(--accent); color: var(--bg);
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: .02em;
+  padding: 2px 8px; white-space: nowrap;
+}
+.detect .id {
+  position: absolute; right: -2px; top: 100%;
+  font-family: var(--font-mono); font-size: 12px; color: var(--track); padding-top: 4px;
+}
+.corner { position: absolute; width: 10px; height: 10px; border-color: var(--accent); border-style: solid; }
+.c1 { top: -7px; left: -7px; border-width: 2px 0 0 2px; }
+.c2 { bottom: -7px; right: -7px; border-width: 0 2px 2px 0; }
+h1 {
+  font-family: var(--font-display); font-weight: 800; letter-spacing: -0.03em;
+  font-size: clamp(44px, 9vw, 92px); line-height: 1; margin: 0;
+}
+@keyframes lock { from { transform: scale(1.06); border-color: transparent; } to { transform: none; } }
+.role {
+  font-family: var(--font-display); font-weight: 500; font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.3; margin: 8px 0 0; max-width: 24ch; text-wrap: balance;
+}
+.role em { font-style: normal; color: var(--accent); }
+.lede { color: var(--muted); max-width: 62ch; margin: 0; font-size: 17px; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-weight: 600; font-size: 15px;
+  padding: 11px 18px; border-radius: 8px; text-decoration: none;
+  border: 1.5px solid var(--ink); background: var(--ink); color: var(--bg); cursor: pointer;
+}
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn.ghost:hover { border-color: var(--ink); }
+.btn:hover { transform: translateY(-1px); }
+.meta { display: flex; gap: 20px; flex-wrap: wrap; font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+.meta span::before { content: "● "; color: var(--track); }
+
+/* sections */
+section { padding-block: 56px; border-top: 1px solid var(--line); }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 4vw, 38px); letter-spacing: -0.02em; margin: 0; }
+.sec-head p { margin: 0; color: var(--muted); font-size: 15px; }
+
+/* projects */
+.projects { display: grid; gap: 20px; }
+.proj {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  padding: 28px; display: grid; gap: 14px; min-width: 0;
+}
+.proj h3 { font-family: var(--font-display); font-weight: 700; font-size: 24px; margin: 0; letter-spacing: -0.01em; }
+.proj .kicker { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); }
+.proj p { margin: 0; color: var(--muted); max-width: 60ch; }
+.stack { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0; }
+.stack li {
+  font-family: var(--font-mono); font-size: 12px; padding: 3px 9px;
+  border: 1px solid var(--line); border-radius: 999px; color: var(--ink);
+}
+.featured { grid-template-columns: 1.1fr 1fr; align-items: center; gap: 28px; }
+.featured .text { display: grid; gap: 14px; min-width: 0; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 760px) {
+  .featured, .pair { grid-template-columns: 1fr; }
+}
+
+/* mock camera frame for TCC */
+.frame {
+  position: relative; aspect-ratio: 16 / 10; max-width: 100%;
+  border-radius: 10px; overflow: hidden;
+  background:
+    linear-gradient(180deg, transparent 62%, color-mix(in srgb, var(--ink) 10%, transparent) 62%),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--ink) 6%, transparent) 0 2px, transparent 2px 46px),
+    var(--bg);
+  border: 1px solid var(--line);
+}
+.frame .hud {
+  position: absolute; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between;
+  font-family: var(--font-mono); font-size: 11px; color: var(--muted);
+}
+.frame .rec::before { content: "● "; color: var(--accent); }
+.count {
+  position: absolute; right: 10px; bottom: 10px;
+  background: var(--ink); color: var(--bg); border-radius: 6px; padding: 6px 10px;
+  font-family: var(--font-mono); font-size: 12px; font-variant-numeric: tabular-nums;
+}
+.count b { font-size: 18px; font-weight: 500; }
+.person {
+  position: absolute; bottom: 14%; width: 11%; height: 46%;
+  border: 1.5px solid var(--accent);
+}
+.person::before {
+  content: ""; position: absolute; left: 50%; top: 10%; transform: translateX(-50%);
+  width: 46%; aspect-ratio: 1; border-radius: 50%; background: color-mix(in srgb, var(--ink) 18%, transparent);
+}
+.person::after {
+  content: ""; position: absolute; left: 18%; right: 18%; top: 38%; bottom: 0;
+  border-radius: 40% 40% 0 0; background: color-mix(in srgb, var(--ink) 18%, transparent);
+}
+.person span {
+  position: absolute; left: -1.5px; bottom: 100%; background: var(--accent); color: var(--bg);
+  font-family: var(--font-mono); font-size: 9px; padding: 0 4px; white-space: nowrap;
+}
+.p1 { left: 8%; animation: walk 9s ease-in-out infinite alternate; }
+.p2 { left: 30%; height: 40%; animation: walk 11s ease-in-out infinite alternate-reverse; }
+.p3 { left: 54%; height: 50%; animation: walk 8s ease-in-out infinite alternate; }
+.p4 { left: 76%; height: 42%; animation: walk 12s ease-in-out infinite alternate-reverse; }
+@keyframes walk { to { transform: translateX(22%); } }
+
+/* experience */
+.timeline { display: grid; gap: 0; }
+.job { display: grid; grid-template-columns: 170px 1fr; gap: 24px; padding-block: 22px; border-bottom: 1px dashed var(--line); }
+.job:last-child { border-bottom: 0; }
+.job .when { font-family: var(--font-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 4px; }
+.job .now { display: inline-block; margin-top: 6px; font-size: 11px; color: var(--accent); background: var(--accent-soft); padding: 1px 8px; border-radius: 999px; }
+.job h3 { font-family: var(--font-display); font-weight: 700; font-size: 21px; margin: 0; }
+.job .org { color: var(--muted); margin: 2px 0 10px; }
+.job ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; max-width: 62ch; }
+.job > div { min-width: 0; }
+@media (max-width: 600px) { .job { grid-template-columns: 1fr; gap: 6px; } }
+
+/* education */
+.edu { display: grid; gap: 10px; }
+.edu h3 { font-family: var(--font-display); font-weight: 700; font-size: 22px; margin: 0; }
+.progress { display: flex; gap: 4px; margin-top: 6px; }
+.progress i { flex: 1; height: 8px; border-radius: 2px; background: var(--line); }
+.progress i.done { background: var(--track); }
+.progress i.current { background: repeating-linear-gradient(135deg, var(--track) 0 4px, transparent 4px 7px); border: 1px solid var(--track); }
+.progress-label { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.disc { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 8px 0 0; }
+.disc li { font-size: 14px; padding: 4px 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
+
+/* skills */
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px; }
+.skills h3 { font-family: var(--font-mono); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 10px; }
+.skills .stack li.key { border-color: var(--accent); color: var(--accent); }
+@media (max-width: 600px) { .skills { grid-template-columns: 1fr; } }
+
+/* contact */
+.contact { display: grid; gap: 20px; }
+.contact .big {
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 5vw, 44px);
+  letter-spacing: -0.02em; margin: 0; max-width: 20ch; text-wrap: balance;
+}
+.mailrow { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.mail {
+  font-family: var(--font-mono); font-size: 15px; padding: 10px 14px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+  user-select: all; overflow-wrap: anywhere;
+}
+footer { padding-block: 32px 48px; font-family: var(--font-mono); font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+
+<div class="wrap">
+  <nav>
+    <span class="handle">yasmin.faraj / dev</span>
+    <ul>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#experiencia">Experiência</a></li>
+      <li><a href="#competencias">Competências</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div class="detect" aria-label="Yasmin Faraj">
+      <span class="tag">pessoa · 0.99</span>
+      <i class="corner c1"></i><i class="corner c2"></i>
+      <h1>Yasmin Faraj</h1>
+      <span class="id">id: 01 · rastreando</span>
+    </div>
+    <p class="role">Desenvolvedora <em>front-end</em> com React, TypeScript e APIs REST.</p>
+    <p class="lede">Estudante de Ciência da Computação na Universidade Positivo. Construo interfaces em componentes, integro front-end com APIs e gosto de projetos que juntam código, dados e visão computacional. Hoje atuo em suporte de TI, resolvendo incidentes e automatizando tarefas, e busco crescer com foco em UX/UI, qualidade de código, performance e segurança.</p>
+    <div class="actions">
+      <a class="btn" href="#projetos">Ver projetos</a>
+      <a class="btn ghost" href="https://github.com/YasminFaraj" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn ghost" href="https://br.linkedin.com/in/yasmin-faraj-33bbb133b" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="meta">
+      <span>Curitiba, PR</span>
+      <span>8º semestre</span>
+      <span>Aberta a oportunidades em front-end</span>
+    </div>
+  </header>
+
+  <section id="projetos">
+    <div class="sec-head">
+      <h2>Projetos</h2>
+      <p>Do front-end à integração com o back-end</p>
+    </div>
+    <div class="projects">
+      <article class="proj featured">
+        <div class="text">
+          <span class="kicker">TCC · Destaque</span>
+          <h3>Eucharist Count</h3>
+          <p>Aplicação web que mostra, em tempo real, quantas pessoas estão em um ambiente. O front-end em React e TypeScript consome a API REST em FastAPI, que processa o vídeo com YOLO para detectar pessoas e ByteTrack para acompanhar cada uma entre os quadros, sem contar ninguém duas vezes.</p>
+          <p>Fiz a integração de ponta a ponta: interface em componentes, API, processamento de vídeo e persistência em SQLite.</p>
+          <ul class="stack">
+            <li>React.js</li><li>TypeScript</li><li>FastAPI</li><li>Python</li><li>OpenCV</li><li>YOLO</li><li>ByteTrack</li><li>SQLite</li>
+          </ul>
+        </div>
+        <div class="frame" role="img" aria-label="Ilustração da interface: quatro pessoas detectadas por caixas, com contador de pessoas no canto">
+          <div class="hud"><span class="rec">AO VIVO · câmera 1</span><span>30 fps</span></div>
+          <div class="person p1"><span>id 03</span></div>
+          <div class="person p2"><span>id 07</span></div>
+          <div class="person p3"><span>id 12</span></div>
+          <div class="person p4"><span>id 15</span></div>
+          <div class="count">pessoas <b>4</b></div>
+        </div>
+      </article>
+
+      <div class="pair">
+        <article class="proj">
+          <span class="kicker">Integração · Segurança</span>
+          <h3>Message-WebHook-RSA</h3>
+          <p>Comunicação entre serviços distribuídos por webhooks e APIs REST, com mensagens cifradas em RSA para garantir confidencialidade e integridade de ponta a ponta.</p>
+          <ul class="stack"><li>Python</li><li>APIs REST</li><li>Webhooks</li><li>RSA</li><li>Git</li></ul>
+        </article>
+        <article class="proj">
+          <span class="kicker">Back-end</span>
+          <h3>API REST de inventário</h3>
+          <p>API com operações CRUD completas, construída com orientação a objetos e modelagem de dados via Entity Framework.</p>
+          <ul class="stack"><li>C#</li><li>ASP.NET Core</li><li>Entity Framework</li><li>SQLite</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experiencia">
+    <div class="sec-head"><h2>Experiência</h2></div>
+    <div class="timeline">
+      <div class="job">
+        <div class="when">03/2026 — atual<br><span class="now">efetivada</span></div>
+        <div>
+          <h3>Suporte de TI</h3>
+          <p class="org">Inovyse · prestadora para empresa de transporte e logística</p>
+          <ul>
+            <li>Análise e resolução de incidentes em sistemas, redes, infraestrutura e servidores.</li>
+            <li>Apoio diário a usuários do TMS KMM, identificando falhas e melhorias de usabilidade.</li>
+            <li>Automação de tarefas com scripts e linha de comando Linux, reduzindo trabalho manual.</li>
+            <li>Efetivada após 3 meses de estágio, em reconhecimento ao desempenho.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <div class="when">07/2021 — 10/2021</div>
+        <div>
+          <h3>Estagiária de Atendimento ao Cliente</h3>
+          <p class="org">UNIUV</p>
+          <ul>
+            <li>Atendimento ao público e cadastro de dados em sistema institucional.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Formação</h2></div>
+    <div class="edu">
+      <h3>Bacharelado em Ciência da Computação</h3>
+      <p class="org" style="margin:0;color:var(--muted)">Universidade Positivo · 2023 — 2026</p>
+      <div>
+        <div class="progress" aria-hidden="true">
+          <i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="current"></i>
+        </div>
+        <span class="progress-label">8º semestre · reta final</span>
+      </div>
+      <ul class="disc">
+        <li>Banco de Dados</li><li>Estrutura de Dados</li><li>Sistemas Operacionais</li>
+        <li>Redes de Computadores</li><li>Segurança da Informação</li><li>Gestão de Projetos e Metodologias Ágeis</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="competencias">
+    <div class="sec-head"><h2>Competências</h2><p>Em destaque, o foco principal</p></div>
+    <div class="skills">
+      <div>
+        <h3>Front-end</h3>
+        <ul class="stack">
+          <li class="key">React.js</li><li class="key">TypeScript</li><li class="key">JavaScript</li><li>HTML</li><li>CSS</li><li>Componentes reutilizáveis</li><li>Interfaces responsivas</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Integrações e back-end</h3>
+        <ul class="stack">
+          <li class="key">APIs REST</li><li>Webhooks</li><li>WebSockets</li><li>Node.js</li><li>FastAPI</li><li>Django</li><li>Flask</li><li>ASP.NET Core</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Linguagens</h3>
+        <ul class="stack">
+          <li>TypeScript</li><li>JavaScript</li><li>Python</li><li>Java</li><li>Kotlin</li><li>C#</li><li>C</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Dados e ferramentas</h3>
+        <ul class="stack">
+          <li>SQL</li><li>MySQL</li><li>SQLite</li><li>Git</li><li>GitHub</li><li>Linux</li><li>VS Code</li><li>Metodologias ágeis</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Idiomas</h3>
+        <ul class="stack"><li>Português · nativo</li><li>Inglês · intermediário</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="contact">
+      <p class="big">Vamos conversar sobre uma vaga ou um projeto?</p>
+      <div class="mailrow">
+        <span class="mail" id="email">yasminfaraj02@gmail.com</span>
+        <button class="btn" id="copy" type="button">Copiar e-mail</button>
+      </div>
+      <div class="actions">
+        <a class="btn ghost" href="https://github.com/YasminFaraj" target="_blank" rel="noopener">github.com/YasminFaraj</a>
+        <a class="btn ghost" href="https://br.linkedin.com/in/yasmin-faraj-33bbb133b" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Yasmin Faraj · Curitiba, PR</footer>
+</div>
+
+<script>
+  const btn = document.getElementById('copy');
+  const mail = document.getElementById('email');
+  btn.addEventListener('click', () => {
+    const text = mail.textContent.trim();
+    const done = () => { btn.textContent = 'Copiado'; setTimeout(() => btn.textContent = 'Copiar e-mail', 1800); };
+    const fallback = () => {
+      const r = document.createRange(); r.selectNodeContents(mail);
+      const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selecionado, use Ctrl+C';
+    };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  });
+</script>
